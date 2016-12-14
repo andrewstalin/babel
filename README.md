@@ -7,7 +7,7 @@ Babel is the library for encoding/decoding strings. Used for convert iconv and i
 Using Encoding type
 
 ```c++
-const std::string str_utf16_be = "";
+const std::string str_utf16_be = "...";
 auto enc = Encoding::open("UTF-16BE", "UTF-8");
 std::string result(enc.encoding_size(str_utf16_be.c_str(), str_utf16_be.size()), 0);
 enc.encode(str_utf16_be.c_str(), str_utf16_be.size()), const_cast<char*>(result.data()), result.size());
@@ -16,7 +16,7 @@ enc.encode(str_utf16_be.c_str(), str_utf16_be.size()), const_cast<char*>(result.
 Using encode function
 
 ```c++
-const std::string str_utf16_be = "";
+const std::string str_utf16_be = "...";
 auto str = babel::encode("UTF-16BE", "UTF-8", str_utf16_be.c_str(), str_utf16_be.size());
 ```
 
