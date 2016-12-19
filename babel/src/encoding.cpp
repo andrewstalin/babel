@@ -14,6 +14,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cassert>
+#include <errno.h>
 
 using namespace babel;
 
