@@ -13,6 +13,7 @@
 #include "gtest/gtest.h"
 #include <string>
 #include <sstream>
+#include <errno.h>
 
 std::vector<char> HexStringToCharArray(const std::string& hex)
 {

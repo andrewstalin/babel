@@ -19,5 +19,7 @@ set_property(TARGET babel.tests APPEND PROPERTY INCLUDE_DIRECTORIES
 target_link_libraries(${PROJECT_NAME} PRIVATE gtest)
 target_link_libraries(${PROJECT_NAME} PRIVATE babel)
 
-
+if(NOT WIN32)
+    target_link_libraries(${PROJECT_NAME} PRIVATE iconv)
+endif()
 
