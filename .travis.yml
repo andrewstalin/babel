@@ -15,8 +15,8 @@ addons:
     
 matrix:
   include:
-    - compiler: gcc
-      os: linux
+    - os: linux
+      compiler: gcc
       addons:
         apt:
           sources:
@@ -24,8 +24,8 @@ matrix:
           packages:
             - g++-5
       env: COMPILER=g++-5
-    - compiler: clang
-      os: linux
+    - os: linux
+      compiler: clang
       addons:
         apt:
           sources:
@@ -34,8 +34,8 @@ matrix:
           packages:
             - clang-3.6
       env: COMPILER=clang++-3.6
-    - compiler: clang
-      os: linux
+    - os: linux
+      compiler: clang
       addons:
         apt:
           sources:
@@ -44,6 +44,18 @@ matrix:
           packages:
             - clang-3.7
       env: COMPILER=clang++-3.7
+    - os: osx
+      osx_image: xcode7.3
+      env: COMPILER=clang++
+    - os: osx
+      osx_image: xcode8
+      env: COMPILER=clang++
+    - os: osx
+      osx_image: xcode8.1
+      env: COMPILER=clang++
+    - os: osx
+      osx_image: xcode8.2
+      env: COMPILER=clang++
   
 script:
   - chmod +x deps.sh && ./deps.sh
