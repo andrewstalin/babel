@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nlohmann/json.svg?branch=master)](https://travis-ci.org/nlohmann/json)
+
 # Overview
 
 Babel is the library for encoding/decoding strings. Used for convert iconv and implementation using Win32 API by Yukihiro Nakadaira.
