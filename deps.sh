@@ -1,13 +1,24 @@
 #!/bin/bash
 
-declare -A DOWNLOADED
+DOWNLOADED=()
 
 CURDIR=${PWD}
 
 function getdeps {
     while IFS='' read -r line || [[ -n "$line" ]]; do
         IFS=', ' read -r -a parts <<< "$line"
-        if ! [ ${DOWNLOADED[${parts[0]}]+_} ]; then
+	
+	isfound=false
+
+	for i in "${DOWNLOADED[@]}"
+	do
+	    if [ $i == ${parts[0]} ]; then
+		isfound=true
+		break
+	    fi
+	done
+	
+        if [ $isfound == false ]; then
 	    if ! [ -d ${PWD}/3rdparty/${parts[0]} ]; then
 	        if [ ${#parts[@]} -gt 2 ]; then
 		   git clone --progress -v -b ${parts[2]} ${parts[1]} ${PWD}/3rdparty/${parts[0]}
@@ -26,7 +37,7 @@ function getdeps {
                 cd ${CURDIR}
 	     fi
 
-	    DOWNLOADED[${parts[0]}]=1
+	    DOWNLOADED+=( ${parts[0]} )
             echo ""
 
 	    if [ -f ${PWD}/3rdparty/${parts[0]}/deps ]; then
