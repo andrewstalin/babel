@@ -1,0 +1,19 @@
+environment:
+  matrix:
+    - VisualStudioVersion: 14.0
+      platform: "Win32"
+      configuration: "Release"
+      vcvarsall_platform: "x86"
+      PlatformToolset: "v140_xp"
+    - VisualStudioVersion: 14.0
+      platform: "x64"
+      configuration: "Release"
+      vcvarsall_platform: "x64"
+      PlatformToolset: "v140_xp"
+
+build_script:
+  - deps.bat
+  - if not exist build mkdir build
+  - cd build
+  - cmake -G "Visual Studio 14" -T v140_xp -D COMPILE_OPTIONS="/Zc:threadSafeInit-;/arch:IA32" -L ../
+  - cmake --build . --config Release
